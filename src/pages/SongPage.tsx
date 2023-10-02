@@ -95,7 +95,7 @@ const SongsList: FC = () => {
                 </Container>
             ) : (
                 <NotFound justifyContent='center' alignContent='center' >
-                    <Image src="/src/public/images/music-svgrepo-com.svg"  alt="" />
+                    <Image src="https://res.cloudinary.com/dyzhbjom8/image/upload/v1696272429/music-svgrepo-com_n3ln31.svg"  alt="" />
                     <Text>
                     No songs found.
                     </Text> 
