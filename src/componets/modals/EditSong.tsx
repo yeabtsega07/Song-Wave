@@ -101,6 +101,12 @@ const Button = styled.button`
         transform: translateY(.5px);
         box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);
     }
+    @media (max-width: 393px) {
+    width: 6rem;
+    height: 3rem;
+    font-size: 0.7rem;
+
+  }
 `;
 
 interface Props {
@@ -167,6 +173,13 @@ const EditSong: React.FC<Props> = ({songTitle, songArtist, songImg, songId, hand
           padding: "2rem",
           transition: "transform 0.5s",
           transform: openModal ? "translateY(0)" : "translateY(-100vh)",
+          // media queries
+          '@media (max-width: 725px)': {
+            minWidth: '15rem',
+          },
+          '@media (max-width: 554px)': {
+            minWidth: '5rem',
+          },
         }}
       >
         
@@ -227,6 +240,12 @@ const EditSong: React.FC<Props> = ({songTitle, songArtist, songImg, songId, hand
         <Button type='submit' 
         css = {{
           marginLeft: "10rem",
+          '@media (max-width: 725px)': {
+            marginLeft: '2rem',
+          },
+          '@media (max-width: 554px)': {
+            marginLeft: '.4rem',
+          },
         }} onClick={notify}
         >Update Song</Button>
         <Button 
