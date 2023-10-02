@@ -64,7 +64,7 @@ const Navbar = () => {
         <>
         <Nav overflowX="hidden">
             <Flex alignItems="center">
-                <Logo src="/src/public/images/icons8-music-100.svg" alt="SongWave Logo" />
+                <Logo src="https://res.cloudinary.com/dyzhbjom8/image/upload/v1696270126/icons8-music-100_ao0pco.svg" alt="SongWave Logo" />
                 <NavLink as="a" href="/">
                     SongWave
                 </NavLink>
