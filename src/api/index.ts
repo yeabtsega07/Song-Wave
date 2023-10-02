@@ -8,7 +8,7 @@ interface Song {
     img: string;
 }
 
-const API_BASE_URL = 'http://localhost:3500';
+const API_BASE_URL = 'https://song-wave-backend-wegt.vercel.app/';
 
 const api: AxiosInstance = axios.create({
     baseURL: API_BASE_URL,
