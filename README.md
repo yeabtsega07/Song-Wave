@@ -1,3 +1,35 @@
+# Song-Wave Music App 
+
+
+
+
+
+#### Get Started 
+
+- Step 1:
+```sh
+git clone https://github.com/yeabtsega07/Song-Wave.git
+```
+- Step 2:
+```sh
+cd Song-Wave
+```
+- Step 3:
+```sh
+npm install 
+```
+- Step 4:
+    -  Start the react application by hitting the command below
+```sh
+npm start
+```
+
+
+
+
+[Redux Toolkit Docs](https://redux-toolkit.js.org/introduction/getting-started)
+
+#### Install Template
 # vite-template-redux
 
 Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Testing Library](https://github.com/testing-library/react-testing-library) to create a modern [React](https://react.dev/) app compatible with [Create React App](https://create-react-app.dev/)
@@ -6,22 +38,20 @@ Uses [Vite](https://vitejs.dev/), [Vitest](https://vitest.dev/), and [React Test
 npx degit reduxjs/redux-templates/packages/vite-template-redux my-app
 ```
 
-## Goals
+#### @reduxjs/toolkit
 
-- Easy migration from Create React App or Vite
-- As beginner friendly as Create React App
-- Optimized performance compared to Create React App
-- Customizable without ejecting
+consists of few libraries
 
-## Scripts
+- redux (core library, state management)
+- immer (allows to mutate state)
+- redux-thunk (handles async actions)
+- reselect (simplifies reducer functions)
 
-- `dev`/`start` - start dev server and open browser
-- `build` - build for production
-- `preview` - locally preview production build
-- `test` - launch test runner
+#### Extras
 
-## Inspiration
+- redux devtools
+- combine reducers
 
-- [Create React App](https://github.com/facebook/create-react-app/tree/main/packages/cra-template)
-- [Vite](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react)
-- [Vitest](https://github.com/vitest-dev/vitest/tree/main/examples/react-testing-lib)
+#### react-redux
+
+connects our app to redux
