@@ -8,40 +8,40 @@ const SideNav = () => {
         <nav css={styles.nav}>
             <ul css={styles.list}>
                 <li css={styles.item}>
-                    <a href="#" css={styles.link}>
+                    <div css={styles.link}>
                         <FaHome css={styles.icon} />
                         <span css={styles.span}>Profile</span>
-                    </a>
+                    </div>
                 </li>
                 <li css={styles.item}>
-                    <a href="#" css={styles.link}>
+                    <div  css={styles.link}>
                         <FaInfoCircle css={styles.icon} />
                         <span css={styles.span}>Info</span>
-                    </a>
+                    </div>
                 </li>
                 <li css={styles.item}>
-                    <a href="#" css={styles.link}>
+                    <div css={styles.link}>
                         <FaEnvelope css={styles.icon} />
                         <span css={styles.span}>Envelope</span>
-                    </a>
+                    </div>
                 </li>
                 <li css={styles.item}>
-                    <a href="#" css={styles.link}>
+                    <div  css={styles.link}>
                         <FaMusic css={styles.icon} />
                         <span css={styles.span}>My Playlist</span>
-                    </a>
+                    </div>
                 </li>
                 <li css={styles.item}>
-                    <a href="#" css={styles.link}>
+                    <div  css={styles.link}>
                         <FaUserPlus css={styles.icon} />
                         <span css={styles.span}>Subscribe</span>
-                    </a>
+                    </div>
                 </li>
                 <li css={styles.item}>
-                    <a href="#" css={styles.link}>
+                    <div  css={styles.link}>
                         <FaHeart css={styles.icon} />
                         <span css={styles.span}>Favorites</span>
-                    </a>
+                    </div>
                 </li>
             </ul>
         </nav>
