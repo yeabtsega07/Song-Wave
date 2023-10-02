@@ -1,8 +1,7 @@
 /* eslint-disable prettier/prettier */
-import React, { useCallback, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useCallback, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from '@emotion/styled';
-import { closeModal2 } from '../../features/modal/ModalSlice';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -109,23 +108,27 @@ interface Props {
   songTitle : string;
   songArtist : string;
   songImg : string;
+  handleClose: () => void;
 }
   
 
   
 
-const EditSong: React.FC<Props> = ({songTitle, songArtist, songImg, songId}) => {
+const EditSong: React.FC<Props> = ({songTitle, songArtist, songImg, songId, handleClose}) => {
   const dispatch = useDispatch();
-  const isOpen = useSelector((state: any) => state.modal2.isOpen);
-  const [openModal, setOpenModal] = useState(false);
+  const [openModal] = useState(true);
   const [artist,setArtist] = useState(songArtist)
   const [imgUrl , setImgUrl] = useState(songImg)
   const [title ,setTitle] = useState(songTitle)
   const [isUpdated, setIsUpdated] = useState(false);
 
-  useEffect(() => {
-    setOpenModal(isOpen);
-  }, [isOpen]);
+
+
+  console.log("songId",songId);
+  console.log("artist",artist);
+  console.log("title",title);
+  console.log("imgUrl",imgUrl);
+  console.log("isUpdated",isUpdated);
 
   const handleSubmit = useCallback((event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -140,16 +143,12 @@ const EditSong: React.FC<Props> = ({songTitle, songArtist, songImg, songId}) => 
       console.log("before dispatch");
       dispatch({type:'songs/updateSong',payload:payloadObject});
       setIsUpdated(true);
+      handleClose();
     }
 
-    dispatch(closeModal2())
-  }, [dispatch, songId, artist, title, imgUrl, isUpdated]);
+  }, [isUpdated, songId, artist, title, imgUrl, dispatch, handleClose]);
 
   const notify = () => toast("Updated a Song Successfully!");
-
-  if (isOpen === false) {
-    return null;
-  }
 
   return (
     <Modal >
@@ -232,8 +231,7 @@ const EditSong: React.FC<Props> = ({songTitle, songArtist, songImg, songId}) => 
         >Update Song</Button>
         <Button 
         css = {{backgroundColor: "#d1cbce",color:"#132f39", border: "2px solid #beb7bb"}}
-        onClick= {() => {
-              dispatch(closeModal2())}} >Cancle</Button>
+        onClick= {handleClose} >Cancle</Button>
 
       </form>
       </div>

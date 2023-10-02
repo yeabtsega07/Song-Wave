@@ -1,15 +1,13 @@
 /* eslint-disable prettier/prettier */
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import {  Flex, Text } from "rebass";
-import { useDispatch, useSelector } from "react-redux";
+import { Flex, Text } from "rebass";
+import { useDispatch } from "react-redux";
 import { deleteSong } from "../../features/song/songSlice";
 import Song from "../../models/song";
 import EditSong from "../modals/EditSong";
-import { openModal2 } from "../../features/modal/ModalSlice";
-import {  toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 interface SongCardItemProps {
     song: Song;
@@ -42,7 +40,7 @@ const CardImage = styled.img`
     height: 100%;
     object-fit: cover;
     object-position: center;
-    filter: brightness(0.5) blur(.5px);
+    filter: brightness(0.5) blur(0.5px);
 `;
 
 const Info = styled.div<{ isVisible: boolean }>`
@@ -57,7 +55,6 @@ const Info = styled.div<{ isVisible: boolean }>`
     opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
     transition: transform 0.5s ease-out, opacity 0.3s ease-out;
 `;
-
 
 const Buttons = styled.div<{ isVisible: boolean }>`
     position: absolute;
@@ -80,16 +77,16 @@ const Button = styled.button`
     border-radius: 7px;
     border: 2px solid #163742;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
-    margin: 0.5em ;
+    margin: 0.5em;
     padding: 0.5em 1.3em;
     transition: transform 0.5s ease-in-out;
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: bold;
     margin-top: 2rem;
 
     &:hover {
         cursor: pointer;
-        transform: translateY(.5px);
+        transform: translateY(0.5px);
         box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.2);
     }
 `;
@@ -103,7 +100,7 @@ const SongCardItem: React.FC<SongCardItemProps> = ({ song }) => {
     const dispatch = useDispatch();
     const [, setIsHovered] = useState(false);
     const [areButtonsVisible, setAreButtonsVisible] = useState(false);
-    const isOpen = useSelector((state: any) => state.modal2.isOpen);
+    const [isOpen, setIsOpen] = useState(false);
 
     const notify = () => toast("Deleted a Song Successfully!");
     const handleDelete = () => {
@@ -112,11 +109,13 @@ const SongCardItem: React.FC<SongCardItemProps> = ({ song }) => {
     };
 
     const handleEdit = () => {
-        console.log("in handle edit")
-        dispatch(openModal2());
-        
-    }
+        console.log("edit");
+        setIsOpen(true);
+    };
 
+    const handleClose = () => {
+        setIsOpen(false);
+    };
 
     return (
         <>
@@ -146,23 +145,30 @@ const SongCardItem: React.FC<SongCardItemProps> = ({ song }) => {
                 </Info>
                 <Buttons isVisible={areButtonsVisible}>
                     <ButtonWrapper>
-                        <Button  onClick={handleEdit}>
-                            Edit
-                        </Button>
+                        <Button onClick={handleEdit}>Edit</Button>
                     </ButtonWrapper>
                     <ButtonWrapper>
-                        <Button onClick={handleDelete}
-                        css = {{
-                            backgroundColor: '#f44336',
-                            border: '2px solid #f44336',
-                        }}
+                        <Button
+                            onClick={handleDelete}
+                            css={{
+                                backgroundColor: "#f44336",
+                                border: "2px solid #f44336",
+                            }}
                         >
                             Delete
                         </Button>
                     </ButtonWrapper>
                 </Buttons>
             </Card>
-            {isOpen && <EditSong songArtist={song.artist} songTitle={song.title} songImg={song.img} songId={song.id}  />}
+            {isOpen && (
+                <EditSong
+                    songArtist={song.artist}
+                    songTitle={song.title}
+                    songImg={song.img}
+                    songId={song.id}
+                    handleClose={handleClose}
+                />
+            )}
         </>
     );
 };
